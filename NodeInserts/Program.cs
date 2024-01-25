@@ -6,6 +6,57 @@ namespace NodeInserts
     
     internal class Program
     {
+        public static int CanConnect(Node<Domino> node, Domino domino)
+        {
+         
+            int counter = 0;
+            while(node != null)
+            {
+                if(node.GetValue().isDomino(node.GetValue().getFirstnum())|| node.GetValue().isDomino(node.GetValue().getSecondnum()))
+                    counter++;
+                node = node.GetNext();
+            }
+            return counter;
+
+        }
+        public static string Winner(Node<Participant> node)
+        {
+            string winner = "";
+            double currentwinner = double.MinValue;
+            while(node != null)
+            {
+                if(node.GetValue().LossPercent() > currentwinner) 
+                {
+                    winner = node.GetValue().GetName();
+                    currentwinner = node.GetValue().LossPercent();
+                }
+                node = node.GetNext();
+            }
+            return winner;
+        }
+        public static void Average(Node<Grade> node)
+        {
+            double average = 0;
+            double counter = 0;
+            while(node != null) 
+            {
+                average += node.GetValue().GetGrade();
+                node = node.GetNext();
+            }
+            
+            Console.WriteLine(average/counter);
+
+        }
+        public static void Average(Node<Student> node) 
+        {
+            
+            while(node != null)
+            {
+                Console.WriteLine(node.GetValue().GetName());
+                Average(node.GetValue().GetGrades());
+                node = node.GetNext();
+            }
+        }
         public static bool IsReciever(Node<ShabatRecievers> node, int day, int month, int year)
         {
             while (node != null)
