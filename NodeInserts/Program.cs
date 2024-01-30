@@ -6,6 +6,24 @@ namespace NodeInserts
     
     internal class Program
     {
+        public static double Cheapest(CityBuses bus, Station end, Station start)
+        {
+            double cheapest = double.MaxValue;
+            Node<Bus> busNode = bus.GetBuses();
+            while (busNode != null)
+            {
+                if(busNode.GetValue().Ride(start, end) < cheapest && busNode.GetValue().Ride(start, end) != -1)
+                {
+                    cheapest = busNode.GetValue().Ride(start, end);
+
+                }
+                busNode = busNode.GetNext();
+            }
+            if (cheapest == double.MaxValue)
+                return -1;
+            else
+                return cheapest;
+        }
         public static int CanConnect(Node<Domino> node, Domino domino)
         {
          

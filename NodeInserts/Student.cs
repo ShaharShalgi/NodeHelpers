@@ -24,4 +24,4 @@ namespace NodeInserts
         public string GetName() { return name; } }
 
     }
-}
+
