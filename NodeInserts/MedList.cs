@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NodeInserts
 {
-    public class Mazgan:Device
+    internal class MedList
     {
     }
 }
